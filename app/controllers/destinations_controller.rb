@@ -4,12 +4,13 @@ class DestinationsController < ApplicationController
   # GET /destinations
   # GET /destinations.json
   def index
-    @destinations = Destination.all
+    @destination = Destination.all
   end
 
   # GET /destinations/1
   # GET /destinations/1.json
   def show
+  
   end
 
   # GET /destinations/new

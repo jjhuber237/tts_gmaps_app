@@ -1,49 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GmapsApp</title>
+    <title>GmapsApp2</title>
     <%= csrf_meta_tags %>
-
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['google_api_key'] %>&callback=initMap"
+    </script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-
   <body>
-
-
-
-  <%= yield %>
-<script>
-function initMap() {
-  var latlong = {lat: 35.590, lng: -82.553};
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 17,
-    center: latlong,
-    scrollwheel: false,
-  });
-  var image = "<%= asset_path 'dog_50px.png' %>"
-
-  var marker = new google.maps.Marker({
-    position: latlong,
-    map: map,
-    title: 'Center',
-    icon: image,
-    animation: google.maps.Animation.BOUNCE
-  });
-
-  var contentString = '<h2>Basecamp Dog!</h2>' + '<p>Waldo wants to say hi!</p>';
-
-  var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
-
-  google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-  });
-}
-</script>
-    <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIN9XsCMn1Dbqn-WFnbpJaVqX5cnpug68&callback=initMap">
-    </script>
+    <%= yield %>
   </body>
 </html>
